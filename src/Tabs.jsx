@@ -1,23 +1,23 @@
 import "./Style.css";
 import React, { useState } from "react";
-import Data from "./Data.js";
-import Tabs from "./Tabs.jsx";
-function App() {
+
+const Tabs = (props) => {
   let initialState = [];
-  Data.forEach((item, index) => {
+  props.data.forEach((item, index) => {
     if (index === 0) {
       initialState[index] = true;
     } else {
       initialState[index] = false;
     }
   });
+
   let [visibility, setVisibility] = useState(initialState);
   return (
-    <div className="App">
-      {Data.map((item, index) => {
+    <>
+      {props.data.map((item, index) => {
         return (
           <div key={item.name}>
-            <button
+            <button 
               onClick={() => {
                 if (visibility[index] === true) {
                   let narr = [...visibility];
@@ -34,14 +34,14 @@ function App() {
               {item.name}
             </button>
             <br />
-            <div className={visibility[index] ? "showDiv" : "hideDiv"}>
-              <Tabs  data={item.subTabs} />
+            <div className={visibility[index] === true ? "showDiv" : "hideDiv"}>
+              {item.answer}
             </div>
           </div>
         );
       })}
-    </div>
+    </>
   );
-}
+};
 
-export default App;
+export default Tabs;

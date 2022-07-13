@@ -1,0 +1,9 @@
+.showDiv{
+    display: block;
+    border: solid black;
+    padding: 10px;
+}
+
+.hideDiv{
+    display: none;
+}
